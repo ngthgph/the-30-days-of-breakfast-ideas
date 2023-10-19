@@ -2,5 +2,7 @@
 <resources>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
-    <dimen name="image_size"></dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="image_size">250dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 </resources>
