@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -28,10 +29,12 @@ import com.example.the30daysofbreakfastideasapp.ui.theme.The30DaysOfBreakfastIde
 
 @Composable
 fun IdeasList(
+    contentPadding: PaddingValues = PaddingValues(),
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         modifier = modifier,
+        contentPadding = contentPadding,
     ) {
         items(ideas){
             IdeaItem(idea = it)
@@ -49,7 +52,7 @@ fun IdeaItem(
             .padding(
                 start = dimensionResource(id = R.dimen.padding_medium),
                 end = dimensionResource(id = R.dimen.padding_medium),
-                top = dimensionResource(id = R.dimen.padding_large)),
+                bottom = dimensionResource(id = R.dimen.padding_large)),
         elevation = CardDefaults.cardElevation(dimensionResource(id = R.dimen.card_elevation))
     ) {
         IdeaInformation(dayRes = idea.dayRes, nameRes = idea.nameRes)

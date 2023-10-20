@@ -31,5 +31,10 @@ val Typography = Typography(
         fontFamily = OpenSans,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp,
-    )
+    ),
+    displayLarge = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 33.sp,
+    ),
 )
