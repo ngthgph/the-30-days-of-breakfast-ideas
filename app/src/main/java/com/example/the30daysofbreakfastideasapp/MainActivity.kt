@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.the30daysofbreakfastideasapp.ui.theme.The30DaysOfBreakfastIdeasAppTheme
@@ -74,7 +75,7 @@ private fun AppTopBar(
                 text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.displayLarge,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
+                modifier = Modifier,
             )
         },
         modifier = modifier

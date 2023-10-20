@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.the30daysofbreakfastideasapp.model.Breakfast
 import com.example.the30daysofbreakfastideasapp.model.BreakfastIdeas.ideas
@@ -57,8 +58,28 @@ fun IdeaItem(
     ) {
         IdeaInformation(dayRes = idea.dayRes, nameRes = idea.nameRes)
         IdeaImage(imageRes = idea.imageRes, nameRes = idea.nameRes)
+        IdeaDescription(descriptionRes = idea.descriptionRes)
     }
 }
+
+@Composable
+fun IdeaDescription(
+    @StringRes descriptionRes: Int,
+    modifier: Modifier = Modifier,
+) {
+    Text(
+        text = stringResource(id = descriptionRes),
+        style = MaterialTheme.typography.bodyLarge,
+        textAlign = TextAlign.Justify,
+        modifier = modifier
+            .padding(
+                start = dimensionResource(id = R.dimen.padding_large),
+                end = dimensionResource(id = R.dimen.padding_large),
+                bottom = dimensionResource(id = R.dimen.padding_large),
+            )
+    )
+}
+
 
 @Composable
 fun IdeaImage(
