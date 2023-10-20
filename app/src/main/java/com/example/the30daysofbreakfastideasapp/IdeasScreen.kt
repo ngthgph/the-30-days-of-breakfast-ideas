@@ -3,13 +3,13 @@ package com.example.the30daysofbreakfastideasapp
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -17,9 +17,14 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -48,17 +53,25 @@ fun IdeaItem(
     idea: Breakfast,
     modifier: Modifier = Modifier,
 ) {
+    var expanded by remember {
+        mutableStateOf(false)
+    }
+
     Card(
         modifier = modifier
             .padding(
                 start = dimensionResource(id = R.dimen.padding_medium),
                 end = dimensionResource(id = R.dimen.padding_medium),
-                bottom = dimensionResource(id = R.dimen.padding_large)),
+                bottom = dimensionResource(id = R.dimen.padding_large))
+            .clickable(
+                onClick = {expanded = !expanded}
+            ),
         elevation = CardDefaults.cardElevation(dimensionResource(id = R.dimen.card_elevation))
     ) {
         IdeaInformation(dayRes = idea.dayRes, nameRes = idea.nameRes)
         IdeaImage(imageRes = idea.imageRes, nameRes = idea.nameRes)
-        IdeaDescription(descriptionRes = idea.descriptionRes)
+        if(expanded)
+            IdeaDescription(descriptionRes = idea.descriptionRes)
     }
 }
 
